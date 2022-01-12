@@ -1,0 +1,9 @@
+.user__text {
+  display: flex;
+}
+@media screen and (max-width: 880px) {
+  .user__text{
+    align-content:space-around;
+    margin: 22.25px auto 0;
+  }
+}
