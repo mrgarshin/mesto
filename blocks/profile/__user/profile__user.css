@@ -1,8 +1,8 @@
-.user {
+.profile__user {
   align-self: center;
 }
 @media screen and (max-width: 880px) {
-  .user {
+  .profile__user {
     margin: 0 auto;
   }
 }

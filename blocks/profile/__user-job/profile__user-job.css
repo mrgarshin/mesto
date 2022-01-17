@@ -1,4 +1,4 @@
-.user__description {
+.profile__user-job {
   font-size: 18px;
   line-height: 22px;
   margin: 12px 0 0;
@@ -8,7 +8,7 @@
   overflow: hidden;
 }
 @media screen and (max-width: 880px) {
-  .user__description {
+  .profile__user-job {
     margin: 14px 0 0;
     font-size: 14px;
     line-height: 17px;

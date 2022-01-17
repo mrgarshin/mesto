@@ -1,8 +1,8 @@
-.user__text {
+.profile__user-text {
   display: flex;
 }
 @media screen and (max-width: 880px) {
-  .user__text{
+  .profile__user-text {
     align-content:space-around;
     margin: 22.25px auto 0;
   }
