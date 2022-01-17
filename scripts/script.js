@@ -10,15 +10,15 @@ let jobInput = document.querySelector('.popup__input_job')
 function openPopUp() {
   nameInput.value = userName.textContent;
   jobInput.value = userDescription.textContent;
-  popUp.classList.add('popup__opened');
+  popUp.classList.add('popup_opened');
 }
 function closePopUp() {
-  popUp.classList.remove('popup__opened');
+  popUp.classList.remove('popup_opened');
 }
 function saveChanges() {
   userName.textContent = nameInput.value;
   userDescription.textContent = jobInput.value;
-  popUp.classList.remove('popup__opened');
+  closePopUp();
 }
 
 profileEditButton.addEventListener('click', openPopUp);
