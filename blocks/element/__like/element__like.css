@@ -4,7 +4,7 @@
   height: 19px;
   background: white;
   cursor: pointer;
-  background: no-repeat center url(/images/like.svg);
+  background: no-repeat center url(../../../images/like.svg);
   transition: 0.5s ease;
 }
 .element__like:hover {
