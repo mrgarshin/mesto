@@ -1,4 +1,4 @@
-.element__trash-button {
+.element__delete-button {
   position: absolute;
   width: 18px;
   height: 19px;
@@ -11,6 +11,6 @@
   padding: 0;
 transition: 0.5s ease;
 }
-.element__trash-button:hover {
+.element__delete-button:hover {
   opacity: 0.5;
 }
