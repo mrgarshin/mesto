@@ -28,6 +28,7 @@ profileEditButton.addEventListener('click', openPopUp);
 popUpCloseButton.addEventListener('click', closePopUp);
 formElement.addEventListener('submit', formSubmitHandler);
 
+// Отображение карточек из массива:
 const initialCards = [
   {
     name: 'Архыз',
@@ -58,7 +59,9 @@ const initialCards = [
 const elementTemplate = document.querySelector('.element_template').content;
 const elements = document.querySelector('.elements')
 
-initialCards.forEach(function(element) {
+initialCards.forEach(newElement);
+
+function newElement(element) {
   const cardElement = elementTemplate.cloneNode(true);
   
   cardElement.querySelector('.element__title').textContent = element.name;
@@ -66,4 +69,20 @@ initialCards.forEach(function(element) {
   cardElement.querySelector('.element__image').src = element.link;
 
   elements.append(cardElement);
-});
+};
+
+// Попап добавления карточки:
+const addButton = document.querySelector('.profile__add-button');
+const editPopup = document.querySelector('.edit_popup')
+const closeEditPopUpButton = editPopup.querySelector('.popup__close-button');
+const createEditPopupButton = editPopup.querySelector('.popup__save-button');
+
+function openEditPopUp() {
+  editPopup.classList.add('popup_opened');
+}
+function closeEditPopUp() {
+  editPopup.classList.remove('popup_opened');
+}
+
+addButton.addEventListener('click', openEditPopUp);
+closeEditPopUpButton.addEventListener('click', closeEditPopUp);
