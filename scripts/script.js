@@ -54,3 +54,16 @@ const initialCards = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
+
+const elementTemplate = document.querySelector('.element_template').content;
+const elements = document.querySelector('.elements')
+
+initialCards.forEach(function(element) {
+  const cardElement = elementTemplate.cloneNode(true);
+  
+  cardElement.querySelector('.element__title').textContent = element.name;
+  cardElement.querySelector('.element__image').alt = element.name;
+  cardElement.querySelector('.element__image').src = element.link;
+
+  elements.append(cardElement);
+});
