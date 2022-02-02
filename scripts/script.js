@@ -43,7 +43,7 @@ const elements = document.querySelector('.elements');
 const place = addImagePopup.querySelector('.popup__input_place');
 const link = addImagePopup.querySelector('.popup__input_link');
 const imagePopup = document.querySelector('.image-popup');
-const imagePopupCloseButton = imagePopup.querySelector('.popup__close-button');
+const imagePopupCloseButton = imagePopup.querySelector('.close-button');
 const imagePopupBackground = imagePopup.querySelector('.image-popup__background');
 const imagePopupTitle = imagePopup.querySelector('.image-popup__title');
 
