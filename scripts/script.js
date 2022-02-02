@@ -35,13 +35,13 @@ const nameInput = document.querySelector('.popup__input_name');
 const jobInput = document.querySelector('.popup__input_job');
 const formElement = document.querySelector('.popup__form');
 const addButton = document.querySelector('.profile__add-button');
-const editPopup = document.querySelector('.edit_popup');
-const closeEditPopUpButton = editPopup.querySelector('.popup__close-button');
-const createEditPopupButton = editPopup.querySelector('.popup__save-button');
+const addImagePopup = document.querySelector('.add-image-popup');
+const closeEditPopUpButton = addImagePopup.querySelector('.popup__close-button');
+const createEditPopupButton = addImagePopup.querySelector('.popup__save-button');
 const elementTemplate = document.querySelector('.element_template').content;
 const elements = document.querySelector('.elements');
-const place = editPopup.querySelector('.popup__input_place');
-const link = editPopup.querySelector('.popup__input_link');
+const place = addImagePopup.querySelector('.popup__input_place');
+const link = addImagePopup.querySelector('.popup__input_link');
 const imagePopup = document.querySelector('.image-popup');
 const imagePopupCloseButton = imagePopup.querySelector('.popup__close-button');
 const imagePopupBackground = imagePopup.querySelector('.image-popup__background');
@@ -75,12 +75,12 @@ function newElement(element) {
   elements.append(cardElement);
 };
 
-function openEditPopUp() {
-  editPopup.classList.add('popup_opened');
+function openAddImagePopup() {
+  addImagePopup.classList.add('popup_opened');
 };
 
-function closeEditPopUp() {
-  editPopup.classList.remove('popup_opened');
+function closeAddImagePopup() {
+  addImagePopup.classList.remove('popup_opened');
 };
 
 function deleteCard(event) {
@@ -113,7 +113,7 @@ function createCard(event) {
   event.preventDefault();
   createbySave();
   
-  closeEditPopUp();
+  closeAddImagePopup();
   place.value = '';
   link.value = '';
 };
@@ -131,8 +131,8 @@ function openImagePopup(event) {
 
 initialCards.forEach(newElement);
 
-addButton.addEventListener('click', openEditPopUp);
-closeEditPopUpButton.addEventListener('click', closeEditPopUp);
+addButton.addEventListener('click', openAddImagePopup);
+closeEditPopUpButton.addEventListener('click', closeAddImagePopup);
 createEditPopupButton.addEventListener('click', createCard);
 profileEditButton.addEventListener('click', openPopUp);
 popUpCloseButton.addEventListener('click', closePopUp);
