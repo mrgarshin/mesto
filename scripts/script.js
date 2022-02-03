@@ -108,10 +108,6 @@ function addCard(element) {
   elements.prepend(cardElement);
 }
 
-function addCardFromArray(element) {
-  addCard(element);
-};
-
 function createNewCard() {
   const element = {name: place.value , link: link.value}
   
@@ -140,7 +136,7 @@ function deleteCard(event) {
 };
 
 function render() {
-  initialCards.forEach(addCardFromArray);
+  initialCards.forEach(addCard);
 }
 
 render();
