@@ -74,7 +74,8 @@ function openImagePopup(event) {
 
 function closePopUp(element) {
   element.classList.remove('popup_opened');
-}
+};
+
 
 function closeProfilePopUp() {
   closePopUp(popUp);
@@ -139,12 +140,27 @@ function render() {
   initialCards.forEach(addCard);
 }
 
+
 render();
 
 imageAddButton.addEventListener('click', openAddImagePopup);
 imageCloseButton.addEventListener('click', closeAddImagePopup);
+imagePopupCloseButton.addEventListener('click', closeImagePopup);
+popUpCloseButton.addEventListener('click', closeProfilePopUp);
 imageSaveButton.addEventListener('click', createCard);
 profileEditButton.addEventListener('click', openProfilePopUp);
-popUpCloseButton.addEventListener('click', closeProfilePopUp);
 formElement.addEventListener('submit', formSubmitHandler);
-imagePopupCloseButton.addEventListener('click', closeImagePopup);
+document.addEventListener('keydown', function (event) {
+  if(event.key === 'Escape') {
+    closeAddImagePopup();
+    closeImagePopup();
+    closeProfilePopUp();
+  }
+}); 
+document.addEventListener('click', function (event) {
+  if(event.target.classList.contains('popup_opened') || event.target.classList.contains('image-popup_opened') ) {
+    closeAddImagePopup();
+    closeImagePopup();
+    closeProfilePopUp();
+  }
+});
