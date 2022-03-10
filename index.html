@@ -42,9 +42,15 @@
       <button class="popup__close-button" type="button"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
       <form action="submit" class="popup__form" name="popup_form" novalidate>
-        <input type="text" class="popup__input popup__input_name" value="" name="name" minlength="2" maxlength="40" required>
-        <span class="input-error">Вы пропустили это поле</span>
-        <input type="text" class="popup__input popup__input_job" value="" name="job" minlength="2" maxlength="200" required>
+        <section class="popup__input-section">
+          <input type="text" class="popup__input popup__input_name" value="" name="name" minlength="2" maxlength="40" required>
+          <span class="popup__input-error"></span>
+        </section>
+        <section class="popup__input-section">
+          <input type="text" class="popup__input popup__input_job" value="" name="job" minlength="2" maxlength="200" required>
+          <span class="popup__input-error"></span>
+        </section>
+        
         <button class="popup__save-button" type="submit">Сохранить</button>
       </form>
     </div>
@@ -55,8 +61,14 @@
       <button class="close-button" type="button"></button>
       <h2 class="popup__title">Новое место</h2>
       <form action="submit" class="popup__form" name="popup_form">
-        <input type="text" class="popup__input popup__input_place" value="" name="place" placeholder="Название">
-        <input type="text" class="popup__input popup__input_link" value="" name="job" placeholder="Ссылка на картинку">
+        <section class="popup__input-section">
+          <input type="text" class="popup__input popup__input_place" value="" name="place" placeholder="Название" minlength="1" maxlength="30" required>
+          <span class="popup__input-error"></span>
+        </section>
+        <section class="popup__input-section">
+          <input type="url" class="popup__input popup__input_link" value="" name="link" placeholder="Ссылка на картинку" required>
+          <span class="popup__input-error"></span>
+        </section>
         <button class="popup__save-button" type="submit">Создать</button>
       </form>
     </div>
