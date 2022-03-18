@@ -25,7 +25,7 @@ const initialCards = [
   }
 ];
 
-const popUp = document.querySelector('.popup');
+const popups = document.querySelectorAll('.popup')
 const profilePopUp = document.querySelector('.profile-popup');
 const profileEditButton = document.querySelector('.profile__edit-button');
 const profileCloseButton = profilePopUp.querySelector('.popup__close-button');
@@ -50,13 +50,15 @@ const imagePopupTitle = imagePopup.querySelector('.image-popup__title');
 
 function openPopup(element) {
   element.classList.add('popup_opened');
+  document.addEventListener('keydown', closeByEsc);
+  document.addEventListener('click', closeByAwayclick);
 }
 
 function openProfilePopUp() {
   nameInput.value = userName.textContent;
   jobInput.value = userDescription.textContent;
   
-  openPopup(popUp);
+  openPopup(profilePopUp);
 };
 
 function openAddImagePopup() {
@@ -68,25 +70,13 @@ function openImagePopup(event) {
   imagePopupBackground.src = event.target.src;
   imagePopupTitle.textContent = event.target.alt;
 
-  imagePopup.classList.add('popup_opened');
+  openPopup(imagePopup)
 };
 
 function closePopUp(element) {
   element.classList.remove('popup_opened');
-
-};
-
-
-function closeProfilePopUp() {
-  closePopUp(popUp);
-};
-
-function closeAddImagePopup() {
-  closePopUp(imageAddPopup);
-};
-
-function closeImagePopup() {
-  imagePopup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closeByEsc);
+  document.removeEventListener('click', closeByAwayclick);
 };
 
 function handleProfileFormSubmit (evt) {
@@ -94,36 +84,46 @@ function handleProfileFormSubmit (evt) {
 
   userName.textContent = nameInput.value;
   userDescription.textContent = jobInput.value;
-  closeProfilePopUp();
 };
 
-function addCard(element) {
+popups.forEach((popup) => {
+  popup.addEventListener('mousedown', (evt) => {
+      if (evt.target.classList.contains('popup_opened') || evt.target.classList.contains('popup__close-button') || evt.target.classList.contains('popup__save-button') ) {
+          closePopUp(popup)
+      }
+  });
+});
+
+function createCard(item) {
   const cardElement = elementTemplate.cloneNode(true);
   const cardElementImage = cardElement.querySelector('.element__image');
 
-  cardElement.querySelector('.element__title').textContent = element.name;
-  cardElementImage.alt = element.name;
-  cardElementImage.src = element.link;
+  cardElement.querySelector('.element__title').textContent = item.name;
+  cardElementImage.alt = item.name;
+  cardElementImage.src = item.link;
 
   addListeners(cardElement);
+  return cardElement;
+}
 
+function addCards(element) {
+  const cardElement = createCard(element);
   elements.prepend(cardElement);
 }
 
 function createNewCard() {
   const element = {name: place.value , link: link.value}
   
-  addCard(element);
+  addCards(element);
 
   place.value = '';
   link.value = '';
 };
 
-function createCard(event) {
+function addCard(event) {
   event.preventDefault();
 
   createNewCard();
-  closeAddImagePopup();
   imageSaveButton.classList.add('popup__save-button_inactive');
   imageSaveButton.setAttribute('disabled', true);
 };
@@ -143,33 +143,31 @@ function deleteCard(event) {
 };
 
 function render() {
-  initialCards.forEach(addCard);
+  initialCards.forEach(addCards);
 }
+
+function closeOpenedPopUp() {
+  const openedPopup = document.querySelector('.popup_opened') 
+  closePopUp(openedPopup);
+  openedPopup.removeEventListener('keydown', closeByEsc)
+    
+} 
 
 function closeByEsc(event) {
   if(event.key === 'Escape') {
-    closeAddImagePopup();
-    closeImagePopup();
-    closeProfilePopUp();
+    closeOpenedPopUp();
   }
 };
 
 function closeByAwayclick(event) {
   if(event.target.classList.contains('popup_opened')) {
-    closeAddImagePopup();
-    closeImagePopup();
-    closeProfilePopUp();
+    closeOpenedPopUp(event.target);
   }
 };
 
 render();
 
 imageAddButton.addEventListener('click', openAddImagePopup);
-imageCloseButton.addEventListener('click', closeAddImagePopup);
-imagePopupCloseButton.addEventListener('click', closeImagePopup);
-profileCloseButton.addEventListener('click', closeProfilePopUp);
-imageAddForm.addEventListener('submit', createCard);
 profileEditButton.addEventListener('click', openProfilePopUp);
 profileForm.addEventListener('submit', handleProfileFormSubmit);
-document.addEventListener('keydown', closeByEsc); 
-document.addEventListener('click', closeByAwayclick);
+imageAddForm.addEventListener('submit', addCard);
