@@ -76,7 +76,7 @@ function addCard(event) {
   createNewCard();
   closeOpenedPopUp();
   
-  imageAddFormValidator._disableSubmitButton();
+  imageAddFormValidator.disableSubmitButton();
 };
 
 function render() {
