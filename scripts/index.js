@@ -143,6 +143,23 @@ function closeByAwayclick(event) {
 
 render();
 
+import FormValidator from './FormValidator.js';
+const settings = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonElement: '.popup__save-button',
+  inputSection:'.popup__input-section',
+  inputErrorMessage:'.popup__input-error',
+  inactiveButtonClass: 'popup__save-button_inactive',
+  inputErrorClass: 'popup__input_type_error',
+  errorElement: 'popup__input-error',
+};
+
+const profileFormValidator = new FormValidator(settings, profileForm);
+const imageAddFormValidator = new FormValidator(settings, imageAddForm)
+profileFormValidator.enableValidation();
+imageAddFormValidator.enableValidation();
+
 imageAddButton.addEventListener('click', openAddImagePopup);
 profileEditButton.addEventListener('click', openProfilePopUp);
 profileForm.addEventListener('submit', handleProfileFormSubmit);
