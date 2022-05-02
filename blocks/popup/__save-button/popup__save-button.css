@@ -8,6 +8,9 @@
   text-align: center;
   cursor: pointer;
   transition: 0.5s ease;
+  box-sizing: border-box;
+  border: 0;
+  padding: 0;
 }
 .popup__save-button:hover {
   opacity: 0.6;

@@ -1,8 +1,5 @@
-const imagePopup = document.querySelector('.image-popup');
-const imagePopupBackground = imagePopup.querySelector('.image-popup__background');
-const imagePopupTitle = imagePopup.querySelector('.image-popup__title');
-
-import {openPopup} from './index.js';
+import { openPopup } from "./utils.js";
+import { imagePopup, imagePopupBackground, imagePopupTitle } from "./constans.js"
 
 export default class Card {
   constructor(data, cardSelector) {
@@ -11,8 +8,12 @@ export default class Card {
     this._cardSelector = cardSelector;
   }
 
-  createCard() {
+  _getTemplate() {
     this._cardElement = document.querySelector(this._cardSelector).content.querySelector('.element').cloneNode(true);
+  }
+
+  createCard() {
+    this._getTemplate();
 
     this._cardElementImage = this._cardElement.querySelector('.element__image');
 
@@ -22,34 +23,40 @@ export default class Card {
 
     this._likeButton = this._cardElement.querySelector('.element__like')
 
-    this._addListeners();
+    this._cardElementImageEventListeners();
+    this._likeButtonEventListener();
+    this._cardElementEventListener();
 
     return this._cardElement;
-  }
+  };
 
-  _addListeners() {
+  _cardElementImageEventListeners() {
     this._cardElementImage.addEventListener('click', () => {
       this._openImagePopup(this._name, this._link);
       openPopup(imagePopup);
     });
+  };
 
+  _likeButtonEventListener() {
     this._likeButton.addEventListener('click', () => {
       this._like();
     });
+  };
 
+  _cardElementEventListener() {
     this._cardElement.querySelector('.element__delete-button').addEventListener('click', evt => {
       this._cardElement.remove();
       this._cardElement = null;
     });
-  }
+  };
 
   _like() {
     this._likeButton.classList.toggle('element__like_active');
   };
     
-  _openImagePopup = (name, link) => {
-    imagePopupTitle.textContent = name;
-    imagePopupBackground.src = link;
-    imagePopupBackground.alt = name;
+  _openImagePopup() {
+    imagePopupTitle.textContent = this._name;
+    imagePopupBackground.src = this._link;
+    imagePopupBackground.alt = this._name;
   };
 }
