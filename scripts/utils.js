@@ -1,4 +1,4 @@
-import { closeByEsc, closeByAwayClick } from "./index.js"
+import { closeByEsc, closeByAwayClick } from "../pages/index.js"
 
 function openPopup(element) {
   element.classList.add('popup_opened');

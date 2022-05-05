@@ -1,7 +1,7 @@
-import Card from "./Card.js";
-import FormValidator from './FormValidator.js';
-import { openPopup } from "./utils.js";
-import { settings, initialCards } from "./constans.js"
+import Card from "../components/Card.js";
+import FormValidator from '../components/FormValidator.js';
+import { openPopup } from "../scripts/utils.js";
+import { settings, initialCards } from "../scripts/constans.js"
 
 const popups = document.querySelectorAll('.popup')
 const profilePopup = document.querySelector('.profile-popup');

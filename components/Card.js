@@ -1,5 +1,5 @@
-import { openPopup } from "./utils.js";
-import { imagePopup, imagePopupBackground, imagePopupTitle } from "./constans.js"
+import { openPopup } from "../scripts/utils.js";
+import { imagePopup, imagePopupBackground, imagePopupTitle } from "../scripts/constans.js"
 
 export default class Card {
   constructor(data, cardSelector) {
