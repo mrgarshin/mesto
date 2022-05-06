@@ -1,18 +1,10 @@
-import { settings, initialCards, imageAddPopup, imageAddForm, profileForm, profilePopup } from "../utils/constans.js";
+import { settings, initialCards, imageAddPopup, imageAddForm, profileForm, profilePopup, profileEditButton, nameInput, descriptionInput, imageAddButton } from "../utils/constans.js";
 import Card from "../components/Card.js";
 import FormValidator from '../components/FormValidator.js';
 import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
 import PopupWithImage from "../components/PopupWithImage.js"
 import PopupWithForm from "../components/PopupWithForm.js"
-
-
-
-const profileEditButton = document.querySelector('.profile__edit-button');
-const nameInput = document.querySelector('.popup__input_name');
-const descriptionInput = document.querySelector('.popup__input_job');
-
-const imageAddButton = document.querySelector('.profile__add-button');
 
 const profileFormValidator = new FormValidator(settings, profileForm);
 const imageAddFormValidator = new FormValidator(settings, imageAddForm);
@@ -35,13 +27,10 @@ const initialCardsList = new Section({
   }
 }, '.elements');
 
-
 const userInfo = new UserInfo({
   userName: '.profile__user-name',
   userDescription: '.profile__user-job',
 });
-
-
 
 const openPopupEditForm = () => {
   const userData = userInfo.getUserInfo();

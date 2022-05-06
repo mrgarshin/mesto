@@ -41,5 +41,9 @@ const imageAddPopup = document.querySelector('.add-image-popup');
 const imageAddForm = imageAddPopup.querySelector('.popup__form');
 const profilePopup = document.querySelector('.profile-popup');
 const profileForm = profilePopup.querySelector('.popup__form');
+const profileEditButton = document.querySelector('.profile__edit-button');
+const nameInput = document.querySelector('.popup__input_name');
+const descriptionInput = document.querySelector('.popup__input_job');
+const imageAddButton = document.querySelector('.profile__add-button');
 
-export { settings, initialCards, imagePopup, imagePopupBackground, imagePopupTitle, imageAddPopup, imageAddForm, profileForm, profilePopup };
+export { settings, initialCards, imagePopup, imagePopupBackground, imagePopupTitle, imageAddPopup, imageAddForm, profileForm, profilePopup, profileEditButton, nameInput, descriptionInput, imageAddButton };
