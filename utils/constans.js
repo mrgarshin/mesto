@@ -1,6 +1,3 @@
-const imagePopup = document.querySelector('.image-popup');
-const imagePopupBackground = imagePopup.querySelector('.image-popup__background');
-const imagePopupTitle = imagePopup.querySelector('.image-popup__title');
 const settings = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
@@ -37,5 +34,12 @@ const initialCards = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
+const imagePopup = document.querySelector('.image-popup');
+const imagePopupBackground = imagePopup.querySelector('.image-popup__background');
+const imagePopupTitle = imagePopup.querySelector('.image-popup__title');
+const imageAddPopup = document.querySelector('.add-image-popup');
+const imageAddForm = imageAddPopup.querySelector('.popup__form');
+const profilePopup = document.querySelector('.profile-popup');
+const profileForm = profilePopup.querySelector('.popup__form');
 
-export { imagePopup, imagePopupBackground, imagePopupTitle, settings, initialCards }
+export { settings, initialCards, imagePopup, imagePopupBackground, imagePopupTitle, imageAddPopup, imageAddForm, profileForm, profilePopup };

@@ -1,10 +1,10 @@
-import { openPopup } from "../scripts/utils.js";
-import { imagePopup, imagePopupBackground, imagePopupTitle } from "../scripts/constans.js"
+import { imagePopup, imagePopupBackground, imagePopupTitle } from "../utils/constans.js"
 
 export default class Card {
-  constructor(data, cardSelector) {
+  constructor({data, handleCardClick}, cardSelector) {
     this._name = data.name;
     this._link = data.link;
+    this._handleCardClick = handleCardClick;
     this._cardSelector = cardSelector;
   }
 
@@ -27,8 +27,14 @@ export default class Card {
 
     return this._cardElement;
   };
-
+  
   _setEventListeners() {
+    this._cardElement.querySelector('.element__image').addEventListener('click', () => {
+      this._handleCardClick({
+          name: this._name,
+          link: this._link
+      })
+    });
     this._cardElementImage.addEventListener('click', () => {
       this._handleOpenImagePopup();
     });
@@ -59,7 +65,5 @@ export default class Card {
     imagePopupTitle.textContent = this._name;
     imagePopupBackground.src = this._link;
     imagePopupBackground.alt = this._name;
-    
-    openPopup(imagePopup);
   };
 }
