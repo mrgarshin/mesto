@@ -34,9 +34,9 @@ const userInfo = new UserInfo({
 });
 
 const openPopupEditForm = () => {
-  const userData = userInfo.getUserInfo();
-  nameInput.value = userData.name;
-  descriptionInput.value = userData.job;  
+  const {name, job} = userInfo.getUserInfo();
+  nameInput.value = name;
+  descriptionInput.value = job;  
   popupEditProfile.open();
 }
 
@@ -50,20 +50,20 @@ const popupAddCard = new PopupWithForm('.add-image-popup', {
   handleFormSubmit: (userData) => {
     const newCard = generateCard(userData)
     initialCardsList.addItem(newCard)
-    popupAddCard.resetInputs();
   }
 })
 
 profileEditButton.addEventListener('click', () => {
   openPopupEditForm();
-  profileFormValidator.enableValidation(); 
 });
 
 imageAddButton.addEventListener('click', () => {
-  imageAddFormValidator.enableValidation();
+  imageAddFormValidator.disableSubmitButton();
   popupAddCard.open();
 });
 
+profileFormValidator.enableValidation(); 
+imageAddFormValidator.enableValidation();
 initialCardsList.renderItems();
 popupWithImage.setEventListeners();
 popupEditProfile.setEventListeners();
