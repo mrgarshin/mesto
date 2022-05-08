@@ -5,17 +5,16 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Интерактивный сервис Mesto</title>
-  <link rel="stylesheet" href="./pages/index.css">
 </head>
 <body class="page">
   <header class="header">
-    <img src="./images/logo.svg" alt="Место.Россия." class="header__logo">
+    <img src="<%=require('./images/logo.svg')%>" alt="Место.Россия." class="header__logo">
   </header>
 
   <main>
     <section class="profile">
       <div class="profile__card">
-        <img src="./images/jack-iv-kusto.jpg" alt="Аватар.Жак-Ив Кусто" class="profile__avatar">
+        <img src="<%=require('./images/jack-iv-kusto.jpg')%>" alt="Аватар.Жак-Ив Кусто" class="profile__avatar">
         <div class="profile__user">
           <div class="profile__user-text">
             <h1 class="profile__user-name">Жак-Ив Кусто</h1>
@@ -92,7 +91,5 @@
       </div>
     </div>
   </template>
-
-  <script type="module" src="./pages/index.js" defer></script>
 </body>
 </html>
